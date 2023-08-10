@@ -33,7 +33,7 @@ Run the following statement:
 
 `` cd nz_supermarket_scraping ``
 
-`` npm init ``npm init
+`` npm init ``
 
 `` npm install --save``
 
