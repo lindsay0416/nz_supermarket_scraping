@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container" style="background: white">
+  <header>
+    <% include ../partials/header %>
+  </header>
+  <main>
+      <h3 style="text-align: center; margin: 30px">Products</h3>
+   
+      <div class="form-group input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+          <input name="query" id="txt_query" placeholder="Search" type="text" class="form-control" style="width:300px;"> 
+        </div>
+
+      <table class="table" id="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" style="text-align: center">Image</th>
+              <th scope="col">Product name</th>
+              <th scope="col">product_id</th>
+              <th scope="col">Normal price</th>
+              <th scope="col">Offer price</th>
+              <th scope="col">Last update date</th>
+              <th scope="col">View in shop</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% docs.map((product, i) => { %>
+              <tr>
+              <th scope="row"><%= i+1 %></th> 
+              <td><img src="<%= product.image_url %>" alt="product-image" style="width: 100px; height: 100px; display:block; margin:auto"></td>
+              <td><%= product.product_name %></td>
+              <td><%= product._id %></td>
+              <td>$ <%= product.product_price.normal_price %></td>   
+              <% if(product.product_price.offer_price !== null){ %>
+              <td>$ <%= product.product_price.offer_price %></td>
+              <% } else { %>
+              <td>No price</td>
+              <% } %>
+              <td><%= product.last_update %></td> 
+              <td><button style="margin-top:10px" ; type="button" class="btn btn-outline-info"><a href="<%= product.url%>">View in shop</a></button></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <script>
+            $('input#txt_query').quicksearch('table#table tbody tr');
+          </script>
+        
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
+</html>

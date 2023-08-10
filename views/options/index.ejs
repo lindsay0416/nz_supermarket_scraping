@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container">
+  <header>
+    <% include ../partials/header %>
+  </header>
+  <main>
+    <div class="jumbotron" style="text-align:center; background: white;">
+      <h3 style="font-size:40px">Options</h3>
+      <p>Get/Delete all data</p>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <img style="max-width:400px; max-height:400px; margin-top:50px;"
+            src="https://www.moneycrashers.com/wp-content/uploads/2010/11/best-cheap-online-grocery-stores-1068x713.jpg" alt="">
+        </div>
+        <div class="col-sm-6">
+
+          <div class="row" style="text-align: center">
+
+            <div class="col-sm-6">
+              <img style="width:170px; height: 30px; margin-top:30px"
+                src="https://www.countdown.co.nz/media/9936/new-cd-logo_1000x176.png" alt="countdown">
+              <p style="margin-top: 10px;">Countdown</p>
+              <button type="button" class="btn btn-secondary btn-lg" style="margin:10px">
+                <a href="/" id="scrape-in-countdown" onclick="event.preventDefault(); 
+                      document.getElementById('scraping-countdown').submit();window.open('/');">Get data</a>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <img style="width:140px; height: 30px; margin-top:30px"
+                src="https://trademe.tmcdn.co.nz/tm/agentimages/jobs/wide/2409123-1.jpg"
+                alt="nwm">
+              <p style="margin-top: 10px;">New World</p>
+              <button type="button" class="btn btn-secondary btn-lg" style="margin:10px">
+                <a href="/" id="scrape-in-nwm" onclick="event.preventDefault(); 
+                    document.getElementById('scraping-nwm').submit();window.open('/');">Get data</a>
+              </button>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+
+              <button type="button" class="btn btn-secondary btn-lg" style="margin:10px">
+                <a href="/" id="delete-countdown">Delete all</a>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-secondary btn-lg" style="margin:10px">
+                <a href="/" id="delete-nwm">Delete all</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <form id="scraping-countdown" action="/scrap/countdown" method="POST">
+      <input type="hidden" name="scrape-countdown" value="" />
+    </form>
+
+    <form id="scraping-nwm" action="/scrap/nwm" method="POST">
+      <input type="hidden" name="scrape-nwm" value="" />
+    </form>
+
+    <script>
+      //DELETE COUNTDOWN DATA
+
+      var del = document.getElementById('delete-countdown')
+      del.addEventListener('click', function () {
+        fetch('/options/countdown', {
+            method: 'DELETE'
+          })
+          .then(function (response) {
+            if (response.ok) {
+              console.log('All categories and products deleted');
+              return;
+            }
+            throw new Error('Request failed.');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+
+      //DELETE NWM DATA
+
+      var del_nwm = document.getElementById('delete-nwm')
+      del_nwm.addEventListener('click', function () {
+        fetch('/options/nwm', {
+            method: 'DELETE'
+          })
+          .then(function (response) {
+            if (response.ok) {
+              console.log('All categories and products deleted');
+              return;
+            }
+            throw new Error('Request failed.');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    </script>
+
+  </main>
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
+</html>
