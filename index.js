@@ -73,15 +73,20 @@ app.listen(process.env.PORT || 8181, async function () {
 });
 
 
+// //Connect to MLAB database
+// mongoose.connect("mongodb://diego:" + process.env.MLAB_PASSWORD + "@ds245234.mlab.com:45234/heroku_44n62dw0", {
+//   useNewUrlParser: true
+// });
+
+// //Connect to local database
+// /*
+// mongoose.connect("mongodb://localhost/SSA");
+// */
+
 //Connect to MLAB database
-mongoose.connect("mongodb://diego:" + process.env.MLAB_PASSWORD + "@ds245234.mlab.com:45234/heroku_44n62dw0", {
+mongoose.connect("mongodb://127.0.0.1:27017/testmogodb", {
   useNewUrlParser: true
 });
-
-//Connect to local database
-/*
-mongoose.connect("mongodb://localhost/SSA");
-*/
 
 app.use((req, res, next) => {
   const error = new Error('Not found');

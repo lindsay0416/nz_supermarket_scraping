@@ -18,7 +18,10 @@ Download their latest versions according to your OS version:
 
 Then open the exe files, install the applications, and follow the instructions
 
-Run MongoDB with Docker: https://hub.docker.com/_/mongo
+Run MongoDB with Docker: 
+
+https://hub.docker.com/_/mongo
+
 `` docker pull mongo ``
 
 ### 4 - Close this repository and prepare de Node server
@@ -28,9 +31,9 @@ In the terminal run:
 
 Run the following statement:
 
-`` cd countdown-nwm-scraping ``
+`` cd nz_supermarket_scraping ``
 
-`` npm init ``
+`` npm init ``npm init
 
 `` npm install --save``
 
