@@ -69,7 +69,7 @@ app.use('/auth', authRoutes);
 
 
 app.listen(process.env.PORT || 8181, async function () {
-  console.log("listening on port " + (process.env.PORT || 5000));
+  console.log("listening on port " + (process.env.PORT || 8181));
 });
 
 
