@@ -18,6 +18,9 @@ Download their latest versions according to your OS version:
 
 Then open the exe files, install the applications, and follow the instructions
 
+Run MongoDB with Docker: https://hub.docker.com/_/mongo
+`` docker pull mongo ``
+
 ### 4 - Close this repository and prepare de Node server
 In the terminal run:
 
